@@ -8,9 +8,51 @@
 2. 读者管理
 
 ## 技术栈
-- 后端：Spring Boot
+- 后端：Spring Boot 2.7.0
+  - spring-boot-starter-web: 用于构建Web应用程序
+  - spring-boot-starter-data-jpa: 用于数据持久化
+  - spring-boot-starter-test: 用于测试
 - 前端：Vue.js + Element UI
-- 数据库：MySQL
+- 数据库：MySQL 8.0
+- 数据库连接：JPA/Hibernate
+
+## 数据库设计
+
+### 表结构
+
+#### 图书表 (book)
+| 字段名 | 类型 | 约束 | 描述 |
+|--------|------|------|------|
+| id | BIGINT | PRIMARY KEY, AUTO_INCREMENT | 图书ID |
+| title | VARCHAR(255) | NOT NULL | 图书标题 |
+| author | VARCHAR(255) | NOT NULL | 作者 |
+| isbn | VARCHAR(255) | UNIQUE | ISBN编号 |
+| publish_date | VARCHAR(255) |  | 出版日期 |
+
+#### 读者表 (reader)
+| 字段名 | 类型 | 约束 | 描述 |
+|--------|------|------|------|
+| id | BIGINT | PRIMARY KEY, AUTO_INCREMENT | 读者ID |
+| name | VARCHAR(255) | NOT NULL | 读者姓名 |
+| email | VARCHAR(255) | UNIQUE | 邮箱 |
+| phone | VARCHAR(255) |  | 电话 |
+| address | VARCHAR(255) |  | 地址 |
+
+### 实体类设计
+
+#### Book实体类
+- `id`: 主键，使用@GeneratedValue(strategy = GenerationType.IDENTITY)生成自增ID
+- `title`: 图书标题，映射到title字段
+- `author`: 作者，映射到author字段
+- `isbn`: ISBN编号，映射到isbn字段
+- `publishDate`: 出版日期，映射到publish_date字段
+
+#### Reader实体类
+- `id`: 主键，使用@GeneratedValue(strategy = GenerationType.IDENTITY)生成自增ID
+- `name`: 读者姓名，映射到name字段
+- `email`: 邮箱，映射到email字段
+- `phone`: 电话，映射到phone字段
+- `address`: 地址，映射到address字段
 
 ## 项目结构
 ```
@@ -43,9 +85,11 @@ src/
 
 ## 运行项目
 1. 确保已安装Java 8+和Maven
-2. 在项目根目录下执行`mvn clean install`
-3. 执行`mvn spring-boot:run`启动项目
-4. 访问`http://localhost:8080`
+2. 确保MySQL数据库已安装并运行，默认数据库名为library_boot_test
+3. 在application.properties文件中配置数据库连接信息（用户名、密码等）
+4. 在项目根目录下执行`mvn clean install`
+5. 执行`mvn spring-boot:run`启动项目
+6. 访问`http://localhost:8080`
 
 ## API设计
 
