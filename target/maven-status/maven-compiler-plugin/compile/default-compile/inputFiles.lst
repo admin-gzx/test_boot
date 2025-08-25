@@ -1,8 +1,11 @@
 D:\github项目\boot_test\src\main\java\com\library\demo\service\impl\BookServiceImpl.java
 D:\github项目\boot_test\src\main\java\com\library\demo\service\impl\Borrow_RecordServiceimpl.java
 D:\github项目\boot_test\src\main\java\com\library\demo\service\impl\ReaderServiceImpl.java
+D:\github项目\boot_test\src\main\java\com\library\demo\service\UserService.java
 D:\github项目\boot_test\src\main\java\com\library\demo\entity\Reader.java
+D:\github项目\boot_test\src\main\java\com\library\demo\repository\UserRepository.java
 D:\github项目\boot_test\src\main\java\com\library\demo\entity\Borrow_Record.java
+D:\github项目\boot_test\src\main\java\com\library\demo\service\impl\UserServiceImpl.java
 D:\github项目\boot_test\src\main\java\com\library\demo\service\BookService.java
 D:\github项目\boot_test\src\main\java\com\library\demo\repository\Borrow_RecordRepository.java
 D:\github项目\boot_test\src\main\java\com\library\demo\service\Borrow_RecordService.java
@@ -11,6 +14,8 @@ D:\github项目\boot_test\src\main\java\com\library\demo\repository\ReaderReposi
 D:\github项目\boot_test\src\main\java\com\library\demo\controller\ReaderController.java
 D:\github项目\boot_test\src\main\java\com\library\demo\service\ReaderService.java
 D:\github项目\boot_test\src\main\java\com\library\demo\entity\Book.java
+D:\github项目\boot_test\src\main\java\com\library\demo\controller\UserController.java
 D:\github项目\boot_test\src\main\java\com\library\demo\LibraryApplication.java
+D:\github项目\boot_test\src\main\java\com\library\demo\entity\User.java
 D:\github项目\boot_test\src\main\java\com\library\demo\controller\BookController.java
 D:\github项目\boot_test\src\main\java\com\library\demo\controller\Borrow_recordeController.java
