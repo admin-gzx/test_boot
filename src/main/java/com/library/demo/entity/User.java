@@ -1,13 +1,8 @@
 package com.library.demo.entity;
 
 import javax.persistence.*;
-
-
 @Entity
-@Table(name = "user")
-
-// 文件名 user.java 首字母未大写，Java 要求文件名与公共类名大小写完全一致，应将文件名改为 User.java
-// 此代码在确保文件名改为 User.java 后无需修改，保持原样即可
+@Table(name="user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,4 +70,5 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
+
 }

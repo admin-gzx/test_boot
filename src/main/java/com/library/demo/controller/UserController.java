@@ -12,54 +12,65 @@ import java.util.List;
 @RequestMapping("/api/users")
 @CrossOrigin(origins = "*")
 public class UserController {
-    
     @Autowired
     private UserService userService;
-    
+
     @GetMapping("")
-    public List<User> getAllUsers() {
+    public List<User> findAll() {
         return userService.getAllUsers();
     }
-    
+
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        User user = userService.findById(id);
-        if (user != null) {
+        User user=userService.getUserById(id);
+        if(user!=null){
             return ResponseEntity.ok(user);
-        } else {
+        }
+        else {
             return ResponseEntity.notFound().build();
         }
     }
-    
+
     @PostMapping("")
-    public User createUser(@RequestBody User user) {
-        // 对于创建操作，通常不需要ID，直接保存
-        return userService.updateUser(null, user);
+    public ResponseEntity<?> createUser(@RequestBody User user) {
+        try {
+            User createdUser = userService.createUser(user);
+            return ResponseEntity.ok(createdUser);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
-    
+
+    @GetMapping("/{username}")
+    public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
+        User user=userService.getUserByName(username);
+        if (user!=null){
+            return ResponseEntity.ok(user);
+        }
+        else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
-        User updatedUser = userService.updateUser(id, user);
-        if (updatedUser != null) {
-            return ResponseEntity.ok(updatedUser);
-        } else {
+        User user1=userService.updateUser(id,user);
+        if(user1!=null){
+            return ResponseEntity.ok(user1);
+        }
+        else {
             return ResponseEntity.notFound().build();
         }
     }
-    
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+    public ResponseEntity<User> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
-    
-    @PostMapping("/login")
-    public ResponseEntity<User> login(@RequestBody User loginUser) {
-        User user = userService.login(loginUser.getUsername(), loginUser.getPassword());
-        if (user != null) {
-            return ResponseEntity.ok(user);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+
+
+
+
+
 }
